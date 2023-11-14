@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+  <!-- 元数据 -->
+  <meta charset="utf-8">
+  <link rel="icon" href="../images/mfmf.webp">
+  <title>在Unity中制作MMD舞蹈视频 | uni_shiki</title>
+  <meta name="author" content="uni_shiki" />
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="robots" content="index,follow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="format-detection" content="telphone=no, email=no" />
+  
+    <meta name="keywords" content="MMD, unity" />
+  
+  <meta name="description" content="&amp;emsp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在Unity中制作MMD舞蹈视频">
+<meta property="og:url" content="http://example.com/2022/08/20/UnityMMDCreateTutorial/index.html">
+<meta property="og:site_name" content="uni_shiki">
+<meta property="og:description" content="&amp;emsp;">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/images/mfmf.webp">
+<meta property="article:published_time" content="2022-08-20T09:43:43.000Z">
+<meta property="article:modified_time" content="2022-09-03T09:40:03.095Z">
+<meta property="article:author" content="uni_shiki">
+<meta property="article:tag" content="unity">
+<meta property="article:tag" content="MMD">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/mfmf.webp">
+<meta name="twitter:site" content="@null">
+  
+  <!-- 站点验证相关 -->
+  
+    
+    
+    
+  
+  <!-- 样式表文件 -->
+  <link rel="stylesheet" id="kratos-css" href="/css/kratosr.min.css" type="text/css" media="all">
+  
+    <link rel="stylesheet" id="highlight-css" href="/css/highlight/night-eighties.min.css" type="text/css" media="all">
+  
+  
+  <link rel="stylesheet" id="fontawe-css" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css" type="text/css" media="all">
+  <link rel="stylesheet" id="nprogress-css" href="https://unpkg.com/nprogress@0.2.0/nprogress.css" type="text/css" media="all">
+  
+  
+    <link rel="stylesheet" href="https://unpkg.com/aplayer@1.10.1/dist/APlayer.min.css">
+  
+  
+    <link rel="stylesheet" href="https://unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  
+  
+    <link rel="stylesheet" id="darkmode-css" href="/css/kr-dark.min.css" type="text/css" media="all">
+  
+  <!-- 不得不预先加载的一些JS文件 -->
+  <script src="https://unpkg.com/jquery@3.6.0/dist/jquery.min.js"></script>
+  
+    <script src="https://unpkg.com/qrcode_js@1.0.0/qrcode.min.js"></script>
+  
+  
+  <style>
+    
+      .kratos-cover.kratos-cover-2 {
+        background-image: url('/images/banner.webp');
+      }
+    
+    
+      @media(min-width:768px) {
+        body.custom-background {
+          background-image: url('/images/myBg.png');
+        }
+      }
+    
+  </style>
+  
+<meta name="generator" content="Hexo 5.4.1"></head>
+
+
+    <body class="custom-background">
+        <div id="kratos-wrapper">
+    <div id="kratos-page">
+        <div id="kratos-header">
+            <header id="kratos-desktop-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="nav-header">
+                        <nav id="kratos-menu-wrap">
+                            <ul id="kratos-primary-menu" class="sf-menu">
+                                
+                                    
+                                        <li><a href="/"><i class="fa fa-home"></i>首页</a></li>
+                                    
+                                
+                                    
+                                        <li><a href="/archives/"><i class="fa fa-file"></i>档案馆</a></li>
+                                    
+                                
+                                    
+                                        <li><a href="/friends/"><i class="fa fa-paw"></i>好伙伴</a></li>
+                                    
+                                
+                                    
+                                        <li>
+                                            <a><i class="fa fa-link"></i>链接</a>
+                                            <ul class="sub-menu">
+                                                
+                                                    
+                                                
+                                                    
+                                                        <li><a target="_blank" rel="noopener" href="https://space.bilibili.com/33554119">作者b站</a></li>
+                                                    
+                                                
+                                            </ul>
+                                        </li>
+                                    
+                                
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+            <header id="kratos-mobile-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="color-logo"><a href="/">uni_shiki</a></div>
+                    <div class="nav-toggle">
+                        <a class="kratos-nav-toggle js-kratos-nav-toggle">
+                            <i></i>
+                        </a>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class="kratos-start kratos-hero-2">
+            <!-- <div class="kratos-overlay"></div> -->
+            <div class="kratos-cover kratos-cover-2 text-center">
+                <div class="desc desc2 animate-box">
+                    <a href="/">
+                        <h2>uni_shiki</h2> <br />
+                        <span></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="kratos-blog-post">
+            <div class="container">
+                <div id="main" class="row">
+                    
+
+        
+
+            <section class="col-md-8">
+
+        
+
+            <article>
+    <div class="kratos-hentry kratos-post-inner clearfix">
+        <header class="kratos-entry-header">
+            
+                <h1 class="kratos-entry-title text-center">在Unity中制作MMD舞蹈视频</h1>
+            
+            
+            <ul class="kratos-post-meta text-center">
+                <li><i class="fa fa-calendar"></i> 2022-08-20</li>
+                <li><i class="fa fa-user"></i> 作者 uni_shiki</li>
+                <li>
+                    <i class="fa fa-edit"></i> 
+                    
+                    
+                        ~16.46K
+                    
+                    字
+                </li>
+                
+            </ul>
+        </header>
+        <div class="kratos-post-content">
+            <div id="expire-alert" class="alert alert-warning hidden" role="alert">
+                <div class="icon"><i class="fa fa-warning"></i></div>
+                <div class="text"><p>本文最后编辑于 <time datetime="1662198003095"></time> 前，其中的内容可能需要更新。</p></div>
+            </div>
+            
+                <div class="kratos-post-inner-toc">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-number">1.</span> <span class="toc-text">准备工作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%84%E7%90%86MMD%E6%96%87%E4%BB%B6"><span class="toc-number">2.</span> <span class="toc-text">处理MMD文件</span></a></li></ol>
+                </div>
+            
+            <hr />
+            <p>&emsp;</p>
+<span id="more"></span>
+<hr>
+<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><ol>
+<li>创建工程。这里我用的是2019.4.31f1c1版本，有较好的插件兼容性</li>
+<li>导入自己的场景和人物模型</li>
+<li>导入插件包：</li>
+</ol>
+<ul>
+<li><strong>Dynamic Bone 1.2.0</strong>即动骨插件，建议使用高版本，方便后续替换成PhysBone</li>
+<li><strong>VRCSDK3-AVATAR-2021.11.24.16.20_Public</strong>VRC官网下，建议使用高版本，方便后续替换成PhysBone</li>
+<li><strong>VRC工具箱v1.2.5_by如梦</strong>来自B站 ，必须最后导入否则报错</li>
+</ul>
+<ol start="4">
+<li>布置场景</li>
+</ol>
+<p><img src="/images/mmdTutorial/1.png"></p>
+<h3 id="处理MMD文件"><a href="#处理MMD文件" class="headerlink" title="处理MMD文件"></a>处理MMD文件</h3><ol start="5">
+<li>导入vmd模型动作文件</li>
+<li>导入vmd镜头动作文件，并在文件名后面加上.bytes，即 xxx.vmd.bytes</li>
+<li>导入音乐文件<br><img src="/images/mmdTutorial/2.png"></li>
+<li>使用菜单中的VRC工具箱 —— MMD动作转换 转换获得动作（不含表情）<br><img src="/images/mmdTutorial/3.png"></li>
+<li>复制一份动作出来方便修改k帧（不复制出来的是只读），取消勾选Bake Into Pose<br><img src="/images/mmdTutorial/4.png"></li>
+<li>创建 Animator Controller并给角色加上，增加一个Layer用来放表情动画，并加上Mask保险<br><img src="/images/mmdTutorial/5.png"></li>
+<li>导入MMD4UnityTools插件，用处是获得表情动画 下载地址：<a target="_blank" rel="noopener" href="https://github.com/ShiinaManatsu/MMD4UnityTools">https://github.com/ShiinaManatsu/MMD4UnityTools</a></li>
+<li>导入完插件后修改MMDExtensionsEditor第300行附近的代码<br><img src="/images/mmdTutorial/6.png" alt="修改前"><br><img src="/images/mmdTutorial/7.png" alt="修改后"><br>其中var chara = GameObject.Find(“Body”); 是获取表情的形态键所在的游戏物体<br>以下为我的目录结构，仅供参考<br><img src="/images/mmdTutorial/8.png"></li>
+<li>修改完后就能够右键vmd文件创建表情动作了<br><img src="/images/mmdTutorial/9.png"></li>
+<li>将表情动作加到Animator中，双击点开表情动作，再点击场景中的人物模型，再在左上角下拉框选择表情动作，会发现下面的Missing提示<br><img src="/images/mmdTutorial/10.png"><br>这时只需手动按形态键名字添加上再复制关键帧即可<br>只有一帧的关键帧可以先删除<br>批量添加操作为：Ctrl按住+左键加选，选完后右键Add<br>添加完后删除最后一帧，Ctrl+C复制Missing的所有帧，选中新添加的所有第一帧，Ctrl+V粘贴即可<br><img src="/images/mmdTutorial/11.png"></li>
+<li>添加相机动画：只需一个脚本，视频教程：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV16r4y1n7pz">https://www.bilibili.com/video/BV16r4y1n7pz</a><br>不想看可忽略，继续看下文<br>以下为该脚本<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br></pre></td><td class="code"><pre><span class="line">using UnityEngine;</span><br><span class="line">using System.Runtime.InteropServices;</span><br><span class="line"></span><br><span class="line">public class MMD_VmdCameraLoad : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    public TextAsset Select_VMD;     //vmdファイル</span><br><span class="line">    public GameObject CameraCenter;  //カメラ中心</span><br><span class="line">    public Camera MainCamera;        //カメラ</span><br><span class="line">    public GameObject MMD_model;     //MMDモデル</span><br><span class="line"></span><br><span class="line">    private bool success = <span class="literal">false</span>;    //データの準備完了フラグ</span><br><span class="line">    CameraData[] Cam_m;</span><br><span class="line">    private int t = 0;</span><br><span class="line">    private <span class="built_in">float</span> t_f = 0.0f;</span><br><span class="line">    private Animator target_animator;</span><br><span class="line">    private <span class="built_in">float</span> nowframe = 0.0f;</span><br><span class="line"></span><br><span class="line">    [Header(<span class="string">&quot;相机视野远近&quot;</span>)]</span><br><span class="line">    [Range(0f,120f)]</span><br><span class="line">    [SerializeField] private <span class="built_in">float</span> camFieldOfView = 60f;</span><br><span class="line">    const int HEADER = 50;            //ヘッダーの桁数</span><br><span class="line">    const int MOTIONCOUNT = 4;        //モーションレコード数</span><br><span class="line">    const int MOTIONDATA = 111;       //モーションデータ（レコード数分）</span><br><span class="line">    const int SKINCOUNT = 4;          //スキンレコード数</span><br><span class="line">    const int SKINDATA = 23;          //スキンデータ（レコード数分）</span><br><span class="line">    const int CAMERACOUNT = 4;        //カメラレコード数</span><br><span class="line">    const int CAMERADATA = 61;        //カメラデータ（レコード数分）</span><br><span class="line">    const int ILLUMINATIONCOUNT = 4;  //照明レコード数</span><br><span class="line">    const int ILLUMINATIONDATA = 28;  //照明データ（レコード数分）</span><br><span class="line">    const int SHADOWCOUNT = 4;        //シャドウレコード数</span><br><span class="line">    const int SHADOWDATA = 9;         //シャドウデータ（レコード数分）  </span><br><span class="line"></span><br><span class="line">    [StructLayout(LayoutKind.Explicit)]</span><br><span class="line">    public struct Union</span><br><span class="line">    &#123;</span><br><span class="line">        [FieldOffset(0)]</span><br><span class="line">        public <span class="built_in">float</span> float0;</span><br><span class="line"></span><br><span class="line">        [FieldOffset(0)]</span><br><span class="line">        public int int0;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //カメラ情報</span><br><span class="line">    public struct CameraData</span><br><span class="line">    &#123;</span><br><span class="line">        public int frame;       //対象フレーム</span><br><span class="line">        public <span class="built_in">float</span> distans;   //距離</span><br><span class="line"></span><br><span class="line">        public <span class="built_in">float</span> Pos_x;     //カメラ中心のx座標</span><br><span class="line">        public <span class="built_in">float</span> Pos_y;     //カメラ中心のy座標</span><br><span class="line">        public <span class="built_in">float</span> Pos_z;     //カメラ中心のz座標</span><br><span class="line"></span><br><span class="line">        public <span class="built_in">float</span> Rot_x;     //カメラ中心のx軸回転</span><br><span class="line">        public <span class="built_in">float</span> Rot_y;     //カメラ中心のy軸回転</span><br><span class="line">        public <span class="built_in">float</span> Rot_z;     //カメラ中心のz軸回転</span><br><span class="line"></span><br><span class="line">        public <span class="built_in">float</span> viewAngle; //視野角</span><br><span class="line"></span><br><span class="line">        public int[] Bezier;    //ベジェ曲線の補間パラメータ</span><br><span class="line">        public bool originalframe;</span><br><span class="line">    &#125;</span><br><span class="line">    void <span class="function"><span class="title">Awake</span></span>()</span><br><span class="line">    &#123;</span><br><span class="line">        target_animator = MMD_model.GetComponent&lt;Animator&gt;();</span><br><span class="line">    &#125;</span><br><span class="line">    // Use this <span class="keyword">for</span> initialization</span><br><span class="line">    void <span class="function"><span class="title">Start</span></span>()</span><br><span class="line">    &#123;</span><br><span class="line">        Camera.main.transform.localPosition = new Vector3(0f, 0f, 0f);</span><br><span class="line">        Quaternion rotation = Quaternion.Euler(0f,0f,0f);</span><br><span class="line">        Camera.main.transform.localRotation = rotation;</span><br><span class="line"></span><br><span class="line">        byte[] raw_data_org = Select_VMD.bytes;</span><br><span class="line">        byte[] frameSum = new byte[4];</span><br><span class="line">        int frameSum_int = 0;</span><br><span class="line">        byte[] frame_data = new byte[4];</span><br><span class="line">        byte[] frame_data_1byte = new byte[1];</span><br><span class="line"></span><br><span class="line">        int index = HEADER + MOTIONCOUNT + SKINCOUNT; //カメラレコード数を格納している位置まで飛ばす</span><br><span class="line"></span><br><span class="line">        //レコード数の取得</span><br><span class="line">        frameSum[0] = raw_data_org[index++];</span><br><span class="line">        frameSum[1] = raw_data_org[index++];</span><br><span class="line">        frameSum[2] = raw_data_org[index++];</span><br><span class="line">        frameSum[3] = raw_data_org[index++];</span><br><span class="line">        frameSum_int = System.BitConverter.ToInt32(frameSum, 0);</span><br><span class="line">        CameraData[] Cam = new CameraData[frameSum_int]; //レコード数分要素を用意</span><br><span class="line"></span><br><span class="line">        // データ取得</span><br><span class="line">        <span class="keyword">for</span> (int i = 0; i &lt; frameSum_int; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            //フレーム</span><br><span class="line">            frame_data[0] = raw_data_org[index++];</span><br><span class="line">            frame_data[1] = raw_data_org[index++];</span><br><span class="line">            frame_data[2] = raw_data_org[index++];</span><br><span class="line">            frame_data[3] = raw_data_org[index++];</span><br><span class="line">            Cam[i].frame = System.BitConverter.ToInt32(frame_data, 0);</span><br><span class="line">            //距離</span><br><span class="line">            Cam[i].distans = getVmdCamera(ref index, raw_data_org);</span><br><span class="line">            //位置</span><br><span class="line">            Cam[i].Pos_x = getVmdCamera(ref index, raw_data_org);</span><br><span class="line">            Cam[i].Pos_y = getVmdCamera(ref index, raw_data_org);</span><br><span class="line">            Cam[i].Pos_z = getVmdCamera(ref index, raw_data_org);</span><br><span class="line">            Cam[i].Rot_x = getVmdCamera(ref index, raw_data_org);</span><br><span class="line">            //角度(ラジアンから変換)</span><br><span class="line">            conversionAngle(ref Cam[i].Rot_x);</span><br><span class="line">            Cam[i].Rot_y = getVmdCamera(ref index, raw_data_org);</span><br><span class="line">            conversionAngle(ref Cam[i].Rot_y);</span><br><span class="line">            Cam[i].Rot_z = getVmdCamera(ref index, raw_data_org);</span><br><span class="line">            conversionAngle(ref Cam[i].Rot_z);</span><br><span class="line">            //ベジェ曲線</span><br><span class="line">            Cam[i].Bezier = new int[24];</span><br><span class="line">            <span class="keyword">for</span> (int j = 0; j &lt; 24; j++)</span><br><span class="line">            &#123;</span><br><span class="line">                frame_data_1byte[0] = raw_data_org[index++];</span><br><span class="line">                Cam[i].Bezier[j] = System.Convert.ToInt32(System.BitConverter.ToString(frame_data_1byte, 0), 16);</span><br><span class="line">            &#125;</span><br><span class="line">            //視野角</span><br><span class="line">            frame_data[0] = raw_data_org[index++];</span><br><span class="line">            frame_data[1] = raw_data_org[index++];</span><br><span class="line">            frame_data[2] = raw_data_org[index++];</span><br><span class="line">            frame_data[3] = raw_data_org[index++];</span><br><span class="line">            Cam[i].viewAngle = System.BitConverter.ToInt32(frame_data, 0);</span><br><span class="line">            index += 1;  //パース分１バイト飛ばす</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        //並び順バラバラなのでソート</span><br><span class="line">        Qsort(ref Cam, 0, Cam.Length - 1);</span><br><span class="line">        //以降補間処理</span><br><span class="line">        Cam_m = new CameraData[Cam[frameSum_int - 1].frame + 1]; //最終フレーム分用意</span><br><span class="line"></span><br><span class="line">        //３次ベジェ曲線補間</span><br><span class="line">        Cam_m[0] = Cam[0];//１レコード目をコピー</span><br><span class="line">        Cam_m[0].originalframe = <span class="literal">true</span>;</span><br><span class="line">        int Addframe = 0;</span><br><span class="line">        int wIndex = 1;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (int i = 0; i &lt; frameSum_int - 1; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            Addframe = Cam[i + 1].frame - Cam[i].frame;</span><br><span class="line">            <span class="keyword">for</span> (int j = 1; j &lt; Addframe; j++)</span><br><span class="line">            &#123;</span><br><span class="line"></span><br><span class="line">                Cam_m[wIndex].frame = wIndex;</span><br><span class="line">                Cam_m[wIndex].Pos_x = Cam[i].Pos_x + (Cam[i + 1].Pos_x - Cam[i].Pos_x) *</span><br><span class="line">                                      (BezierCurve(new Vector2(0, 0), new Vector2(Cam[i + 1].Bezier[0], Cam[i + 1].Bezier[2]),</span><br><span class="line">                                                   new Vector2(Cam[i + 1].Bezier[1], Cam[i + 1].Bezier[3]), new Vector2(127, 127),</span><br><span class="line">                                                   (<span class="built_in">float</span>)(1.0 * j / (Addframe))).y) / 127;</span><br><span class="line">                Cam_m[wIndex].Pos_y = Cam[i].Pos_y + (Cam[i + 1].Pos_y - Cam[i].Pos_y) *</span><br><span class="line">                                      (BezierCurve(new Vector2(0, 0), new Vector2(Cam[i + 1].Bezier[4], Cam[i + 1].Bezier[6]),</span><br><span class="line">                                                   new Vector2(Cam[i + 1].Bezier[5], Cam[i + 1].Bezier[7]), new Vector2(127, 127),</span><br><span class="line">                                                   (<span class="built_in">float</span>)(1.0 * j / (Addframe))).y) / 127;</span><br><span class="line">                Cam_m[wIndex].Pos_z = Cam[i].Pos_z + (Cam[i + 1].Pos_z - Cam[i].Pos_z) *</span><br><span class="line">                                      (BezierCurve(new Vector2(0, 0), new Vector2(Cam[i + 1].Bezier[8], Cam[i + 1].Bezier[10]),</span><br><span class="line">                                                   new Vector2(Cam[i + 1].Bezier[9], Cam[i + 1].Bezier[11]), new Vector2(127, 127),</span><br><span class="line">                                                   (<span class="built_in">float</span>)(1.0 * j / (Addframe))).y) / 127;</span><br><span class="line">                Cam_m[wIndex].Rot_x = Cam[i].Rot_x + (Cam[i + 1].Rot_x - Cam[i].Rot_x) *</span><br><span class="line">                                      (BezierCurve(new Vector2(0, 0), new Vector2(Cam[i + 1].Bezier[12], Cam[i + 1].Bezier[14]),</span><br><span class="line">                                                   new Vector2(Cam[i + 1].Bezier[13], Cam[i + 1].Bezier[15]), new Vector2(127, 127),</span><br><span class="line">                                                   (<span class="built_in">float</span>)(1.0 * j / (Addframe))).y) / 127;</span><br><span class="line">                Cam_m[wIndex].Rot_y = Cam[i].Rot_y + (Cam[i + 1].Rot_y - Cam[i].Rot_y) *</span><br><span class="line">                                      (BezierCurve(new Vector2(0, 0), new Vector2(Cam[i + 1].Bezier[12], Cam[i + 1].Bezier[14]),</span><br><span class="line">                                                   new Vector2(Cam[i + 1].Bezier[13], Cam[i + 1].Bezier[15]), new Vector2(127, 127),</span><br><span class="line">                                                   (<span class="built_in">float</span>)(1.0 * j / (Addframe))).y) / 127;</span><br><span class="line">                Cam_m[wIndex].Rot_z = Cam[i].Rot_z + (Cam[i + 1].Rot_z - Cam[i].Rot_z) *</span><br><span class="line">                                      (BezierCurve(new Vector2(0, 0), new Vector2(Cam[i + 1].Bezier[12], Cam[i + 1].Bezier[14]),</span><br><span class="line">                                                   new Vector2(Cam[i + 1].Bezier[13], Cam[i + 1].Bezier[15]), new Vector2(127, 127),</span><br><span class="line">                                                   (<span class="built_in">float</span>)(1.0 * j / (Addframe))).y) / 127;</span><br><span class="line">                Cam_m[wIndex].distans = Cam[i].distans + (Cam[i + 1].distans - Cam[i].distans) *</span><br><span class="line">                                      (BezierCurve(new Vector2(0, 0), new Vector2(Cam[i + 1].Bezier[16], Cam[i + 1].Bezier[18]),</span><br><span class="line">                                                   new Vector2(Cam[i + 1].Bezier[17], Cam[i + 1].Bezier[19]), new Vector2(127, 127),</span><br><span class="line">                                                   (<span class="built_in">float</span>)(1.0 * j / (Addframe))).y) / 127;</span><br><span class="line">                Cam_m[wIndex].viewAngle = Cam[i].viewAngle + (Cam[i + 1].viewAngle - Cam[i].viewAngle) *</span><br><span class="line">                                      (int)(BezierCurve(new Vector2(0, 0), new Vector2(Cam[i + 1].Bezier[20], Cam[i + 1].Bezier[22]),</span><br><span class="line">                                                        new Vector2(Cam[i + 1].Bezier[21], Cam[i + 1].Bezier[23]), new Vector2(127, 127),</span><br><span class="line">                                                        (<span class="built_in">float</span>)(1.0 * j / (Addframe))).y) / 127;</span><br><span class="line">                wIndex++;</span><br><span class="line">            &#125;</span><br><span class="line">            Cam_m[wIndex] = Cam[i + 1];</span><br><span class="line">            Cam_m[wIndex++].originalframe = <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        success = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void <span class="function"><span class="title">Update</span></span>()</span><br><span class="line">    &#123;</span><br><span class="line">        //カメラ情報が完成したらカメラスタート</span><br><span class="line">        <span class="keyword">if</span> (success)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (t != (int)nowframe)</span><br><span class="line">            &#123;</span><br><span class="line">                //新しいフレームの処理</span><br><span class="line">                t = (int)nowframe;</span><br><span class="line">                //最終フレームを超えないようにする処理</span><br><span class="line">                <span class="keyword">if</span> (t &lt; Cam_m.Length - 1)</span><br><span class="line">                &#123;</span><br><span class="line">                    CameraCenter.transform.localPosition = new Vector3(Cam_m[t].Pos_x / 12.5f + MMD_model.transform.localPosition.x,</span><br><span class="line">                                                                       Cam_m[t].Pos_y / 12.5f + MMD_model.transform.localPosition.y,</span><br><span class="line">                                                                       Cam_m[t].Pos_z / 12.5f + MMD_model.transform.localPosition.z);</span><br><span class="line">                    this.transform.localPosition = new Vector3(this.transform.localPosition.x, this.transform.localPosition.y, Cam_m[t].distans / 12.5f);</span><br><span class="line">                    CameraCenter.transform.rotation = Quaternion.Euler(-Cam_m[t].Rot_x, -Cam_m[t].Rot_y, -Cam_m[t].Rot_z);</span><br><span class="line">                    MainCamera.fieldOfView = camFieldOfView;//Cam_m[t].viewAngle; sxqn&amp;lianai:60 SingMe:18 </span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                //同じフレームが再度処理された場合の処理</span><br><span class="line">                <span class="keyword">if</span> (t + 1 &lt; Cam_m.Length - 1 &amp;&amp; !Cam_m[t + 1].originalframe)</span><br><span class="line">                &#123;</span><br><span class="line">                    t_f = nowframe - (int)nowframe;</span><br><span class="line">                    CameraCenter.transform.localPosition = new Vector3(((Cam_m[t + 1].Pos_x - Cam_m[t].Pos_x) * t_f + Cam_m[t].Pos_x) / 12.5f + MMD_model.transform.localPosition.x,</span><br><span class="line">                                                                       ((Cam_m[t + 1].Pos_y - Cam_m[t].Pos_y) * t_f + Cam_m[t].Pos_y) / 12.5f + MMD_model.transform.localPosition.y,</span><br><span class="line">                                                                       ((Cam_m[t + 1].Pos_z - Cam_m[t].Pos_z) * t_f + Cam_m[t].Pos_z) / 12.5f + MMD_model.transform.localPosition.z);</span><br><span class="line">                    this.transform.localPosition = new Vector3(this.transform.localPosition.x, this.transform.localPosition.y, Cam_m[t].distans / 12.5f);</span><br><span class="line">                    CameraCenter.transform.rotation = Quaternion.Euler((-Cam_m[t + 1].Rot_x - -Cam_m[t].Rot_x) * t_f + -Cam_m[t].Rot_x,</span><br><span class="line">                                                                        (-Cam_m[t + 1].Rot_y - -Cam_m[t].Rot_y) * t_f + -Cam_m[t].Rot_y,</span><br><span class="line">                                                                        (-Cam_m[t + 1].Rot_z - -Cam_m[t].Rot_z) * t_f + -Cam_m[t].Rot_z);</span><br><span class="line">                    MainCamera.fieldOfView = camFieldOfView;// (Cam_m[t + 1].viewAngle - Cam_m[t].viewAngle) * t_f + Cam_m[t].viewAngle;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        nowframe = getAnimationFrame();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private <span class="built_in">float</span> <span class="function"><span class="title">getAnimationFrame</span></span>()</span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">float</span> returnValue = 0.0f;</span><br><span class="line"></span><br><span class="line">        var clipInfoList = target_animator.GetCurrentAnimatorClipInfo(0);</span><br><span class="line">        <span class="keyword">if</span> (clipInfoList != null)</span><br><span class="line">        &#123;</span><br><span class="line">            var clip = clipInfoList[0].clip;</span><br><span class="line">            var stateInfo = target_animator.GetCurrentAnimatorStateInfo(0);</span><br><span class="line">            returnValue = clip.length * stateInfo.normalizedTime * clip.frameRate;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">return</span> returnValue;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">float</span> getVmdCamera(ref int index, byte[] data)</span><br><span class="line">    &#123;</span><br><span class="line">        Union union = new Union();</span><br><span class="line">        byte[] raw_data = new byte[4];</span><br><span class="line"></span><br><span class="line">        raw_data[0] = data[index++];</span><br><span class="line">        raw_data[1] = data[index++];</span><br><span class="line">        raw_data[2] = data[index++];</span><br><span class="line">        raw_data[3] = data[index++];</span><br><span class="line">        union.int0 = System.BitConverter.ToInt32(raw_data, 0);</span><br><span class="line"></span><br><span class="line">        <span class="built_in">return</span> (union.float0);</span><br><span class="line">    &#125;</span><br><span class="line">    // ラジアンから角度を取得</span><br><span class="line">    void conversionAngle(ref <span class="built_in">float</span> rot)</span><br><span class="line">    &#123;</span><br><span class="line">        rot = (<span class="built_in">float</span>)(rot * 180 / System.Math.PI);</span><br><span class="line">    &#125;</span><br><span class="line">    //クイックソート</span><br><span class="line">    void Qsort(ref CameraData[] data, int left, int right)</span><br><span class="line">    &#123;</span><br><span class="line">        int i, j;</span><br><span class="line">        int pivot;</span><br><span class="line">        CameraData tmp;</span><br><span class="line"></span><br><span class="line">        i = left; j = right;</span><br><span class="line">        pivot = data[(left + right) / 2].frame;</span><br><span class="line">        <span class="keyword">do</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">while</span> ((i &lt; right) &amp;&amp; (data[i].frame &lt; pivot)) i++;</span><br><span class="line">            <span class="keyword">while</span> ((j &gt; left) &amp;&amp; (pivot &lt; data[j].frame)) j--;</span><br><span class="line">            <span class="keyword">if</span> (i &lt;= j)</span><br><span class="line">            &#123;</span><br><span class="line">                tmp = data[i];</span><br><span class="line">                data[i] = data[j];</span><br><span class="line">                data[j] = tmp;</span><br><span class="line">                i++; j--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">while</span> (i &lt;= j);</span><br><span class="line">        <span class="keyword">if</span> (left &lt; j) Qsort(ref data, left, j);</span><br><span class="line">        <span class="keyword">if</span> (i &lt; right) Qsort(ref data, i, right);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //以降ベジェ曲線に関する関数</span><br><span class="line">    <span class="built_in">float</span> BezierCurveX(<span class="built_in">float</span> x1, <span class="built_in">float</span> x2, <span class="built_in">float</span> x3, <span class="built_in">float</span> x4, <span class="built_in">float</span> t)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">return</span> Mathf.Pow(1 - t, 3) * x1 + 3 * Mathf.Pow(1 - t, 2) * t * x2 + 3 * (1 - t) * Mathf.Pow(t, 2) * x3 + Mathf.Pow(t, 3) * x4;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">float</span> BezierCurveY(<span class="built_in">float</span> y1, <span class="built_in">float</span> y2, <span class="built_in">float</span> y3, <span class="built_in">float</span> y4, <span class="built_in">float</span> t)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">return</span> Mathf.Pow(1 - t, 3) * y1 + 3 * Mathf.Pow(1 - t, 2) * t * y2 + 3 * (1 - t) * Mathf.Pow(t, 2) * y3 + Mathf.Pow(t, 3) * y4;</span><br><span class="line">    &#125;</span><br><span class="line">    Vector2 BezierCurve(Vector2 p1, Vector2 p2, Vector2 p3, Vector2 p4, <span class="built_in">float</span> t)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">return</span> new Vector2(</span><br><span class="line">            BezierCurveX(p1.x, p2.x, p3.x, p4.x, t),</span><br><span class="line">            BezierCurveY(p1.y, p2.y, p3.y, p4.y, t));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+说明：其中有部分内容是经过我修改过的，在此指出：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">//Start()中的这三行</span><br><span class="line">Camera.main.transform.localPosition = new Vector3(0f, 0f, 0f);</span><br><span class="line">Quaternion rotation = Quaternion.Euler(0f,0f,0f);</span><br><span class="line">Camera.main.transform.localRotation = rotation;</span><br><span class="line">//以及</span><br><span class="line">[Header(<span class="string">&quot;相机视野远近&quot;</span>)]</span><br><span class="line">[Range(0f,120f)]</span><br><span class="line">[SerializeField] private <span class="built_in">float</span> camFieldOfView = 60f;</span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line">MainCamera.fieldOfView = camFieldOfView;//Cam_m[t].viewAngle; sxqn&amp;lianai:60 SingMe:18 </span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line">MainCamera.fieldOfView = camFieldOfView;// (Cam_m[t + 1].viewAngle - Cam_m[t].viewAngle) * t_f + Cam_m[t].viewAngle;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>将该脚本添加到下图所示物体上，并按对应的命名来设置<strong>相机</strong>的目录结构，VMDCAM为空节点，Camera为正常的主相机<br>并为脚本附上对应的物体：.bytes文件、节点、相机、人物模型<br><img src="/images/mmdTutorial/12.png"><br>16. 最后为相机加上Audio Source组件加上音乐就完成啦<br><img src="/images/mmdTutorial/13.png"><br>17. 最后的最后推荐一个AssetStore的资源，叫做Unity Recorder，它能在运行游戏时帮你录制Game窗口的画面，并能直接录制4K画质，使用方便<br>教程：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Lt411H7bp">https://www.bilibili.com/video/BV1Lt411H7bp</a></p>
+<hr>
+<p><strong>注</strong>：</p>
+<ol>
+<li>PhysBone比Dynamic Bone的物理性能高10倍；</li>
+<li>最终若想发布则不能使用PhysBone因为需配合VRCSDK一起使用，而VRCSDK无法导出；</li>
+<li>可以移除VRCSDK后再导出，当然也只能使用Dynamic Bone了。</li>
+</ol>
+<hr>
+<p>任何问题可与博主交流，站内有联系方式</p>
+<hr>
+
+        </div>
+        
+            <div class="kratos-copyright text-center clearfix">
+                <h5>本作品采用 <a rel="license nofollow" target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">知识共享署名-相同方式共享 4.0 国际许可协议</a> 进行许可</h5>
+            </div>
+        
+        <footer class="kratos-entry-footer clearfix">
+            
+                <div class="post-like-donate text-center clearfix" id="post-like-donate">
+                
+                    <a class="donate" href="javascript:;"><i class="fa fa-bitcoin"></i> 打赏</a>
+                
+                
+                    <a class="share" href="javascript:;"><i class="fa fa-share-alt"></i> 分享</a>
+                    <div class="share-wrap" style="display: none;">
+    <div class="share-group">
+        <a href="javascript:;" class="share-plain qq" onclick="share('qq');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-qq"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain qzone" onclick="share('qzone');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-star"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weixin pop style-plain" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weixin"></i>
+            </div>
+            <div class="share-int">
+                <div class="qrcode" id="wechat-qr"></div>
+                <p>打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮</p>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weibo" onclick="share('weibo');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weibo"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain facebook style-plain" onclick="share('facebook');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-facebook"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain twitter style-plain" onclick="share('twitter');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-twitter"></i>
+            </div>
+        </a>
+    </div>
+    <script type="text/javascript">
+        $(()=>{
+            new QRCode("wechat-qr", {
+                text: "http://example.com/2022/08/20/UnityMMDCreateTutorial/",
+                width: 150,
+                height: 150,
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        });
+        function share(dest) {
+            const qqBase        = "https://connect.qq.com/widget/shareqq/index.html?";
+            const weiboBase     = "https://service.weibo.com/share/share.php?";
+            const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
+            const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
+            const twitterBase   = "https://twitter.com/intent/tweet?";
+            const hostUrl       = "http://example.com/2022/08/20/UnityMMDCreateTutorial/";
+            const title         = "「在Unity中制作MMD舞蹈视频」";
+            const excerpt       = `&emsp;`;
+            let _URL;
+            switch (dest) {
+                case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
+                case "weibo"    : _URL = weiboBase+"url="+hostUrl+"&title="+title+excerpt;                                 break;
+                case "qzone"    : _URL = qzoneBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";  break;
+                case "facebook" : _URL = facebookBase+"u="+hostUrl;                                                        break;
+                case "twitter"  : _URL = twitterBase+"text="+title+excerpt+"&url="+hostUrl;                                break;
+            }
+            window.open(_URL);
+        };
+    </script>
+</div>
+                
+                </div>
+            
+            <div class="footer-tag clearfix">
+                <div class="pull-left">
+                <i class="fa fa-tags"></i>
+                    <a class="tag-none-link" href="/tags/MMD/" rel="tag">MMD</a>, <a class="tag-none-link" href="/tags/unity/" rel="tag">unity</a>
+                </div>
+                <div class="pull-date">
+                <span>最后编辑：2022-09-03</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+        <nav class="navigation post-navigation clearfix" role="navigation">
+            
+            <div class="nav-previous clearfix">
+                <a title=" MyShader1_CircleOnGround" href="/2022/08/19/MyShader1-CircleOnGround/">&lt; 上一篇</a>
+            </div>
+            
+            
+            <div class="nav-next clearfix">
+                <a title=" Unity Shader入门精要 第七章" href="/2022/08/26/Shader学习笔记-6/">下一篇 &gt;</a>
+            </div>
+            
+        </nav>
+    
+    
+        <div id="disqus_thread" class="post-comments lazy-load"></div>
+
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://example.com/2022/08/20/UnityMMDCreateTutorial/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = '2022/08/20/UnityMMDCreateTutorial/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    var load_comm = () => {
+        if (typeof DISQUS === 'undefined') {
+            var d = document, s = d.createElement('script');
+            s.src = 'https://unishiki.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        } else {
+            DISQUS.reset({
+                reload: true,
+                config: function () {  
+                    this.page.url = 'http://example.com/2022/08/20/UnityMMDCreateTutorial/';  // Replace PAGE_URL with your page's canonical URL variable
+                    this.page.identifier = '2022/08/20/UnityMMDCreateTutorial/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                }
+            });
+        }
+    };
+    
+</script>
+<script async id="dsq-count-scr" src="//unishiki.disqus.com/count.js"></script>
+
+<noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
+</article>
+
+        
+
+            </section>
+
+        
+
+                
+            
+
+<section id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm">
+    <!-- 文章和页面根据splitter来分割，没有的话就从头开始设置为sticky -->
+    
+    
+                <aside id="krw-about" class="widget widget-kratos-about clearfix">
+    <div class="photo-background"></div>
+    <div class="photo-wrapper clearfix">
+        <div class="photo-wrapper-tip text-center">
+            <img class="about-photo" src="/images/ava1.jpg" />
+        </div>
+    </div>
+    <div class="textwidget">
+        <p class="text-center"></p>
+    </div>
+    <div class="site-meta">
+        <a class="meta-item" href="/archives/">
+            <span class="title">
+                文章
+            </span>
+            <span class="count">
+                86
+            </span>
+        </a>
+        <a class="meta-item" href="/categories/">
+            <span class="title">
+                分类
+            </span>
+            <span class="count">
+                3
+            </span>
+        </a>
+        <a class="meta-item" href="/tags/">
+            <span class="title">
+                标签
+            </span>
+            <span class="count">
+                17
+            </span>
+        </a>
+    </div>
+</aside>
+            
+                    <div class="sticky-area">
+                
+                    <aside id="krw-toc" class="widget widget-kratos-toc clearfix">
+    <div class="photo-background"></div>
+    <h4 class="widget-title no-after">
+        <i class="fa fa-compass"></i>
+        文章目录
+        <span class="toc-progress-bar"></span>
+    </h4>
+    <div class="textwidget">
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-text">准备工作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%84%E7%90%86MMD%E6%96%87%E4%BB%B6"><span class="toc-text">处理MMD文件</span></a></li></ol>
+    </div>
+</aside>
+                
+                
+  <aside id="krw-categories" class="widget widget-kratos-categories clearfix">
+    <h4 class="widget-title"><i class="fa fa-folder"></i>分类目录</h4>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">学习记录</a><span class="category-list-count">76</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/">开发记录</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%99%E7%A8%8B%E6%96%87%E6%A1%A3/">教程文档</a><span class="category-list-count">3</span></li></ul>
+  </aside>
+
+
+            
+                
+  <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
+    <h4 class="widget-title"><i class="fa fa-tags"></i>标签聚合</h4>
+      <div class="tag-clouds">
+        <a href="/tags/C/" style="font-size: 0.6em;">C#</a> <a href="/tags/Java%E7%AC%94%E8%AE%B0/" style="font-size: 0.66em;">Java笔记</a> <a href="/tags/MMD/" style="font-size: 0.6em;">MMD</a> <a href="/tags/MyShader/" style="font-size: 0.6em;">MyShader</a> <a href="/tags/dots/" style="font-size: 0.69em;">dots</a> <a href="/tags/games101/" style="font-size: 0.71em;">games101</a> <a href="/tags/shader/" style="font-size: 0.74em;">shader</a> <a href="/tags/unity/" style="font-size: 0.8em;">unity</a> <a href="/tags/unityUI/" style="font-size: 0.6em;">unityUI</a> <a href="/tags/v2ray/" style="font-size: 0.6em;">v2ray</a> <a href="/tags/%E5%9B%BE%E5%BD%A2%E5%AD%A6/" style="font-size: 0.74em;">图形学</a> <a href="/tags/%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/" style="font-size: 0.63em;">底层原理</a> <a href="/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" style="font-size: 0.77em;">性能优化</a> <a href="/tags/%E6%95%B0%E5%AD%A6%E5%8F%AF%E8%A7%86%E5%8C%96/" style="font-size: 0.74em;">数学可视化</a> <a href="/tags/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 0.69em;">算法与数据结构</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/" style="font-size: 0.71em;">计算机图形学</a> <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" style="font-size: 0.6em;">面试题</a>
+      </div>
+  </aside>
+
+            
+                
+  <aside id="krw-posts" class="widget widget-kratos-posts">
+  <h4 class="widget-title"><i class="fa fa-file"></i>最新文章</h4>
+  <div class="tab-content">
+      <ul class="list-group">
+        
+        
+          
+          
+            <a class="list-group-item" href="/2023/11/14/Mathematical-Visualization-09/"><i class="fa  fa-book"></i> 数学可视化(09)——Rayarch光线步进算法</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2023/11/07/Mathematical-Visualization-08/"><i class="fa  fa-book"></i> 数学可视化(08)——分形Fractal</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2023/11/07/Mathematical-Visualization-07/"><i class="fa  fa-book"></i> 数学可视化(07)——随机与噪声</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2023/11/07/Mathematical-Visualization-06/"><i class="fa  fa-book"></i> 数学可视化(06)——平移、旋转、缩放变换</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2023/11/06/Mathematical-Visualization-05/"><i class="fa  fa-book"></i> 数学可视化(05)——2D距离场与图像</a>
+            
+          
+        
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+      </ul>
+  </div>
+  </aside>
+
+            
+    </div>
+</section>
+        
+        </div>
+    </div>
+</div>
+<footer>
+    <div id="footer"  class="ap-lrc"  >
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 footer-list text-center">
+                    <ul class="kratos-social-icons">
+                        
+                        <li><a href="mailto:ccc895286662@gmail.com"><i class="fa fa-envelope"></i></a></li>
+                        
+                        
+                        
+                        
+                        
+                        <li><a target="_blank" rel="nofollow" href="https://github.com/unishiki"><i class="fa fa-github"></i></a></li>
+                        
+                    </ul>
+                    <ul class="kratos-copyright">
+                        <div>
+                            <li>&copy; 2023 uni_shiki 版权所有.</li>
+                            <li>本站已运行<span id="span_dt">Loading...</span></li>
+                        </div>
+                        <div>
+                            <li>Theme <a href="https://github.com/Candinya/Kratos-Rebirth" target="_blank">Kratos:Rebirth</a></li>
+                            <li>Site built with&nbsp;<i class="fa fa-heart throb" style="color:#d43f57"></i>&nbsp;by uni_shiki.</li>
+                        </div>
+                        <div>
+                            <li>Powered by <a href="https://hexo.io" target="_blank" rel="nofollow">Hexo</a></li>
+                            <li>Hosted on <a href="https://github.io" target="_blank">Github Pages</a></li>
+                        </div>
+                        <div>
+                            
+                            
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="kr-tool text-center">
+            <div class="tool">
+                
+                    <div class="box search-box">
+                        <a href="/search/">
+                            <span class="fa fa-search"></span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="box theme-box" id="darkmode-switch">
+                        <span class="fa fa-adjust"></span>
+                    </div>
+                
+                
+                    <div class="box group-box">
+                        <a href="https://jq.qq.com/?_wv=1027&k=CpdI35JY" target="_blank" rel="nofollow">
+                            <span class="fa fa-users"></span>
+                        </a>
+                    </div>
+                
+            </div>
+            <div class="box gotop-box">
+                <span class="fa fa-chevron-up"></span>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+</div>
+
+        <script defer src="https://unpkg.com/bootstrap@3.3.4/dist/js/bootstrap.min.js"></script>
+<script defer src="https://unpkg.com/nprogress@0.2.0/nprogress.js"></script>
+<script>
+    if (!window.kr) {
+        window.kr = {};
+    }
+    window.kr.notMobile = (!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)));
+    window.kr.siteRoot = "/";
+</script>
+
+
+    <script async src="/js/candy.min.js"></script>
+
+
+
+    <script defer src="https://unpkg.com/aplayer@1.10.1/dist/APlayer.min.js"></script>
+    
+    <script defer src="https://unpkg.com/meting@2/dist/Meting.min.js"></script>
+    <meting-js
+        server="netease"
+        type="playlist"
+        id="3080117718"
+        order="random"
+        fixed="true"
+    >
+    </meting-js>
+
+
+
+    <script defer src="https://unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<script defer src="https://unpkg.com/clipboard@2.0.6/dist/clipboard.min.js"></script>
+<script defer src="/js/kratosr.min.js"></script>
+<script defer src="/js/pjax.min.js"></script>
+
+    <script defer src="https://unpkg.com/layui-src@2.5.5/dist/layui.all.js"></script>
+
+
+    <script defer src="/js/kr-dark.min.js"></script>
+
+
+
+<!-- Extra support for third-party plguins  -->
+
+
+    </body>
+</html>
